@@ -13,8 +13,13 @@ require 'poole/renderer'
 module Jekyll
   module PoolePlugin
     class Tags < Liquid::Tag
+      def initialize(tag_name, text, tokens)
+        text = text.strip
+        @text = text.empty? ? "all" : text
+      end
+
       def render(context)
-        Renderer.new(context, @markup).send :"render_all"
+        Renderer.new(context, @markup).send :"render_#{@text}"\
       end
     end
   end

@@ -17,6 +17,7 @@ module Jekyll
         tags = Array.new
         tags << render_site_name
         tags << render_title
+        tags << render_type
         tags << render_description
         tags << render_published_time
         tags << render_author
@@ -37,6 +38,11 @@ module Jekyll
         format META_TAG, :property => "og:title", :content => title if title
       end
 
+      def render_type
+        type = @page['title'] ? "article" : "website"
+        format META_TAG, :property => "og:type", :content => type
+      end
+
       def render_description
         description = @page['description'] || nil
 
@@ -53,15 +59,17 @@ module Jekyll
       end
 
       def render_url
-        format META_TAG, :property => "og:url", :content => @site.config['url'] + @page['url']
+        url = remove_index(@site.config['url'] + @page['url'])
+        format META_TAG, :property => "og:url", :content => url
       end
 
       def render_canonical
-        format LINK_TAG, :rel => "canonical", :href => @page['url'] if @page['url']
+        format LINK_TAG, :rel => "canonical", :href => remove_index(@page['url']) if @page['url']
       end
 
       def render_image
-          format META_TAG, :property => "og:image", :content => @site.config['url'] + "/" + @page['image'] if @page['image']
+          image = @page['image'] || @site.config['og_image']
+          format META_TAG, :property => "og:image", :content => @site.config['url'] + "/" + image if image
 
       end
 
@@ -69,6 +77,13 @@ module Jekyll
         Array(@page['categories']).map do |category|
           format META_TAG, :property => "article:tag", :content => category
         end
+      end
+
+      private
+
+      def remove_index(string)
+        string.slice!("index.html")
+        string
       end
     end
   end
