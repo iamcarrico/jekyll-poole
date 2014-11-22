@@ -1,5 +1,5 @@
 # Title: Mr. Poole's Plugin
-# Author: Ian Carrico http://iamcarrico.com
+# Author: Ian Carrico https://iamcarrico.com
 # Description: Output a list of metatags for your site.
 #
 # Syntax {% poole_tags  %}

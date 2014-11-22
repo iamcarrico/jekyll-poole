@@ -1,12 +1,17 @@
-
+# Renderer class for Mr. Poole's plugin
+# Author: Ian Carrico https://iamcarrico.com
+# Description: Output a list of metatags for your site.
+#
 
 module Jekyll
+  # The Poole Plugin module.
   module PoolePlugin
+    # The Renderer class for Poole.
     class Renderer
       META_TAG = '<meta property="%{property}" content="%{content}">'
       LINK_TAG = '<link rel="%{rel}" href="%{href}" />'
 
-      def initialize(context, markup)
+      def initialize(context, _markup)
         @site   = context.registers[:site]
         @page   = context.registers[:page]
 
