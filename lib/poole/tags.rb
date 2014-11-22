@@ -5,17 +5,18 @@
 # Syntax {% poole_tags  %}
 #
 
-require "liquid"
+require 'liquid'
 require 'date'
 
 require 'poole/renderer'
 
 module Jekyll
   module PoolePlugin
+    # Adding in our class tags.
     class Tags < Liquid::Tag
-      def initialize(tag_name, text, tokens)
+      def initialize(_tag_name, text, _tokens)
         text = text.strip
-        @text = text.empty? ? "all" : text
+        @text = text.empty? ? 'all' : text
       end
 
       def render(context)
