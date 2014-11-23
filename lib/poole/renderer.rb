@@ -35,7 +35,10 @@ module Jekyll
       end
 
       def render_site_name
-        format META_TAG, property: 'og:site_name', content: @site_name if @site_name
+        format(
+          META_TAG,
+          property: 'og:site_name',
+          content: @site_name) if @site_name
       end
 
       def render_title
@@ -51,11 +54,17 @@ module Jekyll
       def render_description
         description = @page['description'] || nil
 
-        format META_TAG, property: 'og:description', content: description if description
+        format(
+          META_TAG,
+          property: 'og:description',
+          content: description) if description
       end
 
       def render_published_time
-        format META_TAG, property: 'article:published_time', content: @page['date'].iso8601 if @page['date']
+        format(
+          META_TAG,
+          property: 'article:published_time',
+          content: @page['date'].iso8601) if @page['date']
       end
 
       def render_author
@@ -75,7 +84,10 @@ module Jekyll
 
       def render_image
         image = @page['image'] || @site.config['og_image']
-        format META_TAG, property: 'og:image', content: @site.config['url'] + '/' + image if image
+        format(
+          META_TAG,
+          property: 'og:image',
+          content: @site.config['url'] + '/' + image) if image
       end
 
       def render_categoies
