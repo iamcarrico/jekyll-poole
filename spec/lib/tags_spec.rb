@@ -99,32 +99,43 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
       context 'description' do
         subject { render('{% poole_tags description %}', default) }
         it { is_expected.to be_empty }
-        end
+      end
 
-        context 'published_time' do
-          subject { render('{% poole_tags published_time %}', default) }
-          it { is_expected.to match tag_meta('article:published_time', '2014-11-21T00:00:00-06:00') }
-        end
+      context 'published_time' do
+        subject { render('{% poole_tags published_time %}', default) }
+        it { is_expected.to match tag_meta('article:published_time', '2014-11-21T00:00:00-06:00') }
+      end
 
-        context 'author' do
-          subject { render('{% poole_tags author %}', default) }
-          it { is_expected.to match tag_meta('article:author', 'https://google.com') }
-        end
+      context 'author' do
+        subject { render('{% poole_tags author %}', default) }
+        it { is_expected.to match tag_meta('article:author', 'https://google.com') }
+      end
 
-        context 'url' do
-          subject { render('{% poole_tags url %}', default) }
-          it { is_expected.to be == render_meta('og:url', 'https://iamcarrico.com/2014/11/21/default-tags.html') }
+      context 'url' do
+        subject { render('{% poole_tags url %}', default) }
+        it do
+          is_expected.to be == render_meta(
+          'og:url',
+          'https://iamcarrico.com/2014/11/21/default-tags.html')
         end
+      end
 
-        context 'canonical' do
-          subject { render('{% poole_tags canonical %}', default) }
-          it { is_expected.to be == render_link('canonical', 'https://iamcarrico.com/2014/11/21/default-tags.html') }
+      context 'canonical' do
+        subject { render('{% poole_tags canonical %}', default) }
+        it do
+          is_expected.to be == render_link(
+          'canonical',
+          'https://iamcarrico.com/2014/11/21/default-tags.html')
         end
+      end
 
-        context 'image' do
-          subject { render('{% poole_tags image %}', default) }
-          it { is_expected.to match tag_meta('og:image', 'https://iamcarrico.com/img/logo.png') }
+      context 'image' do
+        subject { render('{% poole_tags image %}', default) }
+        it do
+          is_expected.to match tag_meta(
+          'og:image', 'https://iamcarrico.com/img/logo.png')
         end
+      end
     end
 
     # A custom post, with specific values for each field.
@@ -146,9 +157,11 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
 
       context 'description' do
         subject { render('{% poole_tags description %}', custom) }
-        it { is_expected.to match tag_meta(
+        it do
+          is_expected.to match tag_meta(
           'og:description',
-          'What can Mr. Poole do for you') }
+          'What can Mr. Poole do for you')
+        end
       end
 
       context 'published_time' do
@@ -163,12 +176,20 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
 
       context 'url' do
         subject { render('{% poole_tags url %}', custom) }
-        it { is_expected.to be == render_meta('og:url', 'https://iamcarrico.com/2014/11/22/what-can-poole-do-for-you.html') }
+        it do
+          is_expected.to be == render_meta(
+          'og:url',
+          'https://iamcarrico.com/2014/11/22/what-can-poole-do-for-you.html')
+        end
       end
 
       context 'canonical' do
         subject { render('{% poole_tags canonical %}', custom) }
-        it { is_expected.to be == render_link('canonical', 'https://iamcarrico.com/2014/11/22/what-can-poole-do-for-you.html') }
+        it do
+          is_expected.to be == render_link(
+          'canonical',
+          'https://iamcarrico.com/2014/11/22/what-can-poole-do-for-you.html')
+        end
       end
 
       context 'image' do
@@ -216,12 +237,20 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
 
       context 'canonical' do
         subject { render('{% poole_tags canonical %}', page) }
-        it { is_expected.to be == render_link('canonical', 'https://iamcarrico.com/about.html') }
+        it do
+          is_expected.to be == render_link(
+          'canonical',
+          'https://iamcarrico.com/about.html')
+        end
       end
 
       context 'image' do
         subject { render('{% poole_tags image %}', page) }
-        it { is_expected.to match tag_meta('og:image', 'https://iamcarrico.com/img/logo.png') }
+        it do
+          is_expected.to match tag_meta(
+          'og:image',
+          'https://iamcarrico.com/img/logo.png')
+        end
       end
     end
   end
