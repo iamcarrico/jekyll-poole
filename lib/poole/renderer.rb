@@ -69,7 +69,8 @@ module Jekyll
       end
 
       def render_canonical
-        format LINK_TAG, rel: 'canonical', href: remove_index(@page['url']) if @page['url']
+        url = remove_index(@site.config['url'] + @page['url'])
+        format LINK_TAG, rel: 'canonical', href: url
       end
 
       def render_image
