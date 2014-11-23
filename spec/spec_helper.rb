@@ -37,21 +37,21 @@ RSpec.configure do |config|
       'destination' => @dest.to_s
       ))
 
-    @indexPage = Jekyll::Page.new(
+    @index_page = Jekyll::Page.new(
       @site,
       fixtures_path.to_s,
       '',
       'index.html'
       )
 
-    @defaultPost = Jekyll::Page.new(
+    @default_post = Jekyll::Page.new(
       @site,
       fixtures_path.to_s,
       '_posts',
       '2014-11-21-default-tags.md'
       )
 
-    @customPost = Jekyll::Page.new(
+    @custom_post = Jekyll::Page.new(
       @site,
       fixtures_path.to_s,
       '_posts',

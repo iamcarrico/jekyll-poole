@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 RSpec.describe Jekyll::PoolePlugin::Tags do
-  let(:index) { { registers: { site: @site, page: @indexPage } } }
-  let(:default) { { registers: { site: @site, page: @defaultPost } } }
-  let(:custom) { { registers: { site: @site, page: @customPost } } }
+  let(:index) { { registers: { site: @site, page: @index_page } } }
+  let(:default) { { registers: { site: @site, page: @default_post } } }
+  let(:custom) { { registers: { site: @site, page: @custom_post } } }
 
   def render(content, page)
     ::Liquid::Template.parse(content).render({}, page)
@@ -51,8 +51,12 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
         subject { render('{% poole_tags author %}', index) }
         it { is_expected.to match tag_re('article:author', 'https://google.com') }
       end
-    end
 
+      context 'image' do
+        subject { render('{% poole_tags image %}', index) }
+        it { is_expected.to match tag_re('og:image', 'https://iamcarrico.com/img/logo.png') }
+      end
+    end
 
     # The values that a default post, without customization will give.
     context 'Default post' do
