@@ -9,4 +9,7 @@ gem 'simplecov', require: false
 
 group :development do
   gem 'guard-rspec'
+  gem 'sprockets'
 end
+
+gemspec
