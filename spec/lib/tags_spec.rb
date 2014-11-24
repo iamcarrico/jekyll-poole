@@ -121,7 +121,7 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
         it do
           is_expected.to be == render_meta(
           'article:published_time',
-          '2014-11-21T00:00:00-06:00')
+          '2014-11-21T06:00:00-06:00')
         end
       end
 
@@ -192,7 +192,7 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
         it do
           is_expected.to be == render_meta(
           'article:published_time',
-          '2014-11-22T00:00:00-06:00')
+          '2014-11-22T06:00:00-06:00')
         end
       end
 

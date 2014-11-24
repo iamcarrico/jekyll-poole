@@ -54,14 +54,14 @@ RSpec.configure do |config|
     @default_post = Jekyll::Post.new(
       @site,
       fixtures_path.to_s,
-      '_posts',
+      '',
       '2014-11-21-default-tags.md'
       )
 
     @custom_post = Jekyll::Post.new(
       @site,
       fixtures_path.to_s,
-      '_posts',
+      '',
       '2014-11-22-what-can-poole-do-for-you.md'
       )
 
