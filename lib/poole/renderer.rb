@@ -51,6 +51,7 @@ module Jekyll
         format META_TAG, property: 'og:type', content: type
       end
 
+      # TODO: Pull from a post's excerpt if a description does not exist.
       def render_description
         description = @page['description'] || nil
 
