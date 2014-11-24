@@ -20,7 +20,7 @@ module Jekyll
       end
 
       def render(context)
-        Renderer.new(context, @markup).send :"render_#{@text}"\
+        Renderer.new(context, @markup).public_send :"render_#{@text}"\
       end
     end
   end

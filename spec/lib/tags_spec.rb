@@ -61,7 +61,7 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
       context 'author' do
         subject { render('{% poole_tags author %}', index) }
         it do
-          is_expected.to be == render_meta(
+          is_expected.to eql render_meta(
           'article:author',
           'https://google.com')
         end
@@ -70,7 +70,7 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
       context 'url' do
         subject { render('{% poole_tags url %}', index) }
         it do
-          is_expected.to be == render_meta(
+          is_expected.to eql render_meta(
           'og:url', 'https://iamcarrico.com/')
         end
       end
@@ -78,7 +78,7 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
       context 'canonical' do
         subject { render('{% poole_tags canonical %}', index) }
         it do
-          is_expected.to be == render_link(
+          is_expected.to eql render_link(
           'canonical',
           'https://iamcarrico.com/')
         end
@@ -87,7 +87,7 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
       context 'image' do
         subject { render('{% poole_tags image %}', index) }
         it do
-          is_expected.to be == render_meta(
+          is_expected.to eql render_meta(
           'og:image',
           'https://iamcarrico.com/img/logo.png')
         end
@@ -119,7 +119,7 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
       context 'published_time' do
         subject { render('{% poole_tags published_time %}', default) }
         it do
-          is_expected.to be == render_meta(
+          is_expected.to eql render_meta(
           'article:published_time',
           '2014-11-21T06:00:00-06:00')
         end
@@ -128,7 +128,7 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
       context 'author' do
         subject { render('{% poole_tags author %}', default) }
         it do
-          is_expected.to be == render_meta(
+          is_expected.to eql render_meta(
           'article:author',
           'https://google.com')
         end
@@ -137,7 +137,7 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
       context 'url' do
         subject { render('{% poole_tags url %}', default) }
         it do
-          is_expected.to be == render_meta(
+          is_expected.to eql render_meta(
           'og:url',
           'https://iamcarrico.com/2014/11/21/default-tags.html')
         end
@@ -146,7 +146,7 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
       context 'canonical' do
         subject { render('{% poole_tags canonical %}', default) }
         it do
-          is_expected.to be == render_link(
+          is_expected.to eql render_link(
           'canonical',
           'https://iamcarrico.com/2014/11/21/default-tags.html')
         end
@@ -181,7 +181,7 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
       context 'description' do
         subject { render('{% poole_tags description %}', custom) }
         it do
-          is_expected.to be == render_meta(
+          is_expected.to eql render_meta(
           'og:description',
           'What can Mr. Poole do for you')
         end
@@ -190,7 +190,7 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
       context 'published_time' do
         subject { render('{% poole_tags published_time %}', custom) }
         it do
-          is_expected.to be == render_meta(
+          is_expected.to eql render_meta(
           'article:published_time',
           '2014-11-22T06:00:00-06:00')
         end
@@ -199,7 +199,7 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
       context 'author' do
         subject { render('{% poole_tags author %}', custom) }
         it do
-          is_expected.to be == render_meta(
+          is_expected.to eql render_meta(
           'article:author',
           'https://google.com')
         end
@@ -208,7 +208,7 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
       context 'url' do
         subject { render('{% poole_tags url %}', custom) }
         it do
-          is_expected.to be == render_meta(
+          is_expected.to eql render_meta(
           'og:url',
           'https://iamcarrico.com/2014/11/22/what-can-poole-do-for-you.html')
         end
@@ -217,7 +217,7 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
       context 'canonical' do
         subject { render('{% poole_tags canonical %}', custom) }
         it do
-          is_expected.to be == render_link(
+          is_expected.to eql render_link(
           'canonical',
           'https://iamcarrico.com/2014/11/22/what-can-poole-do-for-you.html')
         end
@@ -226,7 +226,7 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
       context 'image' do
         subject { render('{% poole_tags image %}', custom) }
         it do
-          is_expected.to be == render_meta(
+          is_expected.to eql render_meta(
           'og:image',
           'https://iamcarrico.com/img/custom-image.png')
         end
@@ -263,7 +263,7 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
       context 'author' do
         subject { render('{% poole_tags author %}', page) }
         it do
-          is_expected.to be == render_meta(
+          is_expected.to eql render_meta(
           'article:author',
           'https://google.com')
         end
@@ -272,7 +272,7 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
       context 'url' do
         subject { render('{% poole_tags url %}', page) }
         it do
-          is_expected.to be == render_meta(
+          is_expected.to eql render_meta(
           'og:url',
           'https://iamcarrico.com/about.html')
         end
@@ -281,7 +281,7 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
       context 'canonical' do
         subject { render('{% poole_tags canonical %}', page) }
         it do
-          is_expected.to be == render_link(
+          is_expected.to eql render_link(
           'canonical',
           'https://iamcarrico.com/about.html')
         end
