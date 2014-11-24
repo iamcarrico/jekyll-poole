@@ -32,6 +32,7 @@ RSpec.configure do |config|
     end
 
     @dest = fixtures_path.join('_site')
+    @dest_empty = fixtures_path.join('_site_empty')
     @site = Jekyll::Site.new(Jekyll.configuration(
       'source'  => fixtures_path.to_s,
       'destination' => @dest.to_s
@@ -65,8 +66,23 @@ RSpec.configure do |config|
       '2014-11-22-what-can-poole-do-for-you.md'
       )
 
+    @empty_site = Jekyll::Site.new(Jekyll.configuration(
+      'source'  => fixtures_path.to_s,
+      'destination' => @dest_empty.to_s,
+      'config' => fixtures_path.join('_config.empty.yml')
+      ))
+
+    @empty_index = @index_page = Jekyll::Page.new(
+      @empty_site,
+      fixtures_path.to_s,
+      '',
+      'index.html'
+      )
+
     @dest.rmtree if @dest.exist?
+    @dest_empty.rmtree if @dest_empty.exist?
     @site.process
+  #  @empty_site.process
   end
 
   config.after(:all) do
