@@ -82,7 +82,7 @@ RSpec.configure do |config|
     @dest.rmtree if @dest.exist?
     @dest_empty.rmtree if @dest_empty.exist?
     @site.process
-  #  @empty_site.process
+    # @empty_site.process
   end
 
   config.after(:all) do
