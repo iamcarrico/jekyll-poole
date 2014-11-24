@@ -23,29 +23,22 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
   end
 
   context '{% poole_tags <tag> %}' do
-    def tag_meta(property, content)
-      Regexp.new "^#{render_meta property, content}$"
-    end
-
-    def tag_link(rel, href)
-      Regexp.new "^#{render_link rel, href}$"
-    end
 
     # What values will the index page give?
     context 'Index page' do
       context 'site name' do
         subject { render('{% poole_tags site_name %}', index) }
-        it { is_expected.to match tag_meta('og:site_name', 'Site Name') }
+        it { is_expected.to eql render_meta('og:site_name', 'Site Name') }
       end
 
       context 'page title' do
         subject { render('{% poole_tags title %}', index) }
-        it { is_expected.to match tag_meta('og:title', 'Site Name') }
+        it { is_expected.to eql render_meta('og:title', 'Site Name') }
       end
 
       context 'type' do
         subject { render('{% poole_tags type %}', index) }
-        it { is_expected.to match tag_meta('og:type', 'website') }
+        it { is_expected.to eql render_meta('og:type', 'website') }
       end
 
       context 'description' do
@@ -98,17 +91,17 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
     context 'Default post' do
       context 'site name' do
         subject { render('{% poole_tags site_name %}', default) }
-        it { is_expected.to match tag_meta('og:site_name', 'Site Name') }
+        it { is_expected.to eql render_meta('og:site_name', 'Site Name') }
       end
 
       context 'page title' do
         subject { render('{% poole_tags title %}', default) }
-        it { is_expected.to match tag_meta('og:title', 'Default Tags') }
+        it { is_expected.to eql render_meta('og:title', 'Default Tags') }
       end
 
       context 'type' do
         subject { render('{% poole_tags type %}', default) }
-        it { is_expected.to match tag_meta('og:type', 'article') }
+        it { is_expected.to eql render_meta('og:type', 'article') }
       end
 
       context 'description' do
@@ -155,7 +148,7 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
       context 'image' do
         subject { render('{% poole_tags image %}', default) }
         it do
-          is_expected.to match tag_meta(
+          is_expected.to eql render_meta(
           'og:image', 'https://iamcarrico.com/img/logo.png')
         end
       end
@@ -165,17 +158,17 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
     context 'Custom post' do
       context 'site name' do
         subject { render('{% poole_tags site_name %}', custom) }
-        it { is_expected.to match tag_meta('og:site_name', 'Site Name') }
+        it { is_expected.to eql render_meta('og:site_name', 'Site Name') }
       end
 
       context 'page title' do
         subject { render('{% poole_tags title %}', custom) }
-        it { is_expected.to match tag_meta('og:title', 'Custom Tags') }
+        it { is_expected.to eql render_meta('og:title', 'Custom Tags') }
       end
 
       context 'type' do
         subject { render('{% poole_tags type %}', custom) }
-        it { is_expected.to match tag_meta('og:type', 'article') }
+        it { is_expected.to eql render_meta('og:type', 'article') }
       end
 
       context 'description' do
@@ -237,17 +230,17 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
     context 'About page' do
       context 'site name' do
         subject { render('{% poole_tags site_name %}', page) }
-        it { is_expected.to match tag_meta('og:site_name', 'Site Name') }
+        it { is_expected.to eql render_meta('og:site_name', 'Site Name') }
       end
 
       context 'page title' do
         subject { render('{% poole_tags title %}', page) }
-        it { is_expected.to match tag_meta('og:title', 'About Us') }
+        it { is_expected.to eql render_meta('og:title', 'About Us') }
       end
 
       context 'type' do
         subject { render('{% poole_tags type %}', page) }
-        it { is_expected.to match tag_meta('og:type', 'article') }
+        it { is_expected.to eql render_meta('og:type', 'article') }
       end
 
       context 'description' do
@@ -290,7 +283,7 @@ RSpec.describe Jekyll::PoolePlugin::Tags do
       context 'image' do
         subject { render('{% poole_tags image %}', page) }
         it do
-          is_expected.to match tag_meta(
+          is_expected.to eql render_meta(
           'og:image',
           'https://iamcarrico.com/img/logo.png')
         end
